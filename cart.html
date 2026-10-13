@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Shopping Cart</h1>
+
+{% if items %}
+
+    {% for item in items %}
+
+        <div class="cart-item">
+
+            <h2>{{ item.title }}</h2>
+
+            <p>{{ item.snippet }}</p>
+
+            <p>
+                Price: ₹{{ item.price }}
+            </p>
+
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+    <div class="cart-summary">
+
+        <h2>Grand Total: ₹{{ total }}</h2>
+
+        <form action="{% url 'articles:buy_cart' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">
+                Buy Now
+            </button>
+        </form>
+
+        <form action="{% url 'articles:delete_cart' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">
+                Delete All Cart
+            </button>
+        </form>
+
+    </div>
+
+{% else %}
+
+    <h2>Your cart is empty.</h2>
+
+    <a href="{% url 'articles:list' %}">
+   
+    </a>
+
+{% endif %}
+
+{% endblock %}

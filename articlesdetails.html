@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="hover-word">{{ article.title }}</h1>
+
+<p class="article-text">
+    {% for word in article.body.split %}
+        <span class="hover-word">{{ word }}</span>
+    {% endfor %}
+</p>
+
+<p class="article-text">
+    <span class="hover-word">Date:</span>
+    <span class="hover-word">{{ article.date }}</span>
+</p>
+
+<h2 class="hover-word">
+    Price: ₹{{ article.price }}
+</h2>
+
+<div class="article-actions">
+
+    <form action="{% url 'articles:add_to_cart' article.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Add to Cart</button>
+    </form>
+
+    <form action="{% url 'articles:buy_now' article.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Buy Now</button>
+    </form>
+
+</div>
+
+{% endblock %}

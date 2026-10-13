@@ -1,0 +1,440 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080808;
+    color: #ffffff;
+}
+
+.page {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 0%, #242424 0%, #080808 45%);
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    width: min(1200px, 92%);
+    margin: auto;
+    padding: 28px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #e50914;
+}
+
+.home-link {
+    color: #bbbbbb;
+    text-decoration: none;
+    font-size: 15px;
+
+    transition: 0.2s ease;
+}
+
+.home-link:hover {
+    color: #ffffff;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 470px;
+    border-bottom: 1px solid #242424;
+}
+
+.hero-content {
+    width: min(1200px, 92%);
+    margin: auto;
+
+    padding-top: 70px;
+}
+
+.eyebrow,
+.section-label {
+    color: #e50914;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    margin-top: 18px;
+
+    font-size: clamp(45px, 7vw, 82px);
+    line-height: 0.98;
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: #777777;
+}
+
+
+/* SEARCH */
+
+.search-form {
+    margin-top: 45px;
+
+    display: flex;
+    width: min(700px, 100%);
+
+    background: #151515;
+    border: 1px solid #333333;
+    border-radius: 8px;
+
+    padding: 6px;
+}
+
+.search-form input {
+    flex: 1;
+
+    min-width: 0;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: white;
+
+    font-size: 16px;
+    padding: 17px 18px;
+}
+
+.search-form input::placeholder {
+    color: #777777;
+}
+
+.search-form button {
+    border: none;
+    border-radius: 6px;
+
+    padding: 0 28px;
+
+    background: #e50914;
+    color: white;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.search-form button:hover {
+    background: #ff1f2d;
+}
+
+
+/* RESULTS */
+
+.results-section {
+    width: min(1200px, 92%);
+    margin: auto;
+
+    padding: 70px 0 100px;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    margin-bottom: 35px;
+}
+
+.results-header h2 {
+    margin-top: 8px;
+
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.result-count {
+    color: #777777;
+    font-size: 14px;
+}
+
+
+/* MOVIE GRID */
+
+.movie-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(210px, 1fr));
+
+    gap: 28px;
+}
+
+
+/* CARD */
+
+.movie-card {
+    background: #111111;
+    border: 1px solid #222222;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #444444;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.55);
+}
+
+
+/* POSTER */
+
+.poster-wrapper {
+    position: relative;
+
+    aspect-ratio: 2 / 3;
+
+    background: #181818;
+
+    overflow: hidden;
+}
+
+.poster {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+.movie-card:hover .poster {
+    transform: scale(1.04);
+}
+
+.no-poster {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #666666;
+}
+
+
+/* RATING */
+
+.rating {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    padding: 7px 9px;
+
+    border-radius: 5px;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    color: #ffd700;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* MOVIE INFO */
+
+.movie-info {
+    padding: 18px;
+}
+
+.movie-info h3 {
+    font-size: 18px;
+    line-height: 1.3;
+
+    margin-bottom: 6px;
+}
+
+.release-date {
+    color: #777777;
+    font-size: 12px;
+
+    margin-bottom: 12px;
+}
+
+.overview {
+    color: #aaaaaa;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* EMPTY STATES */
+
+.empty-state,
+.empty-search {
+    text-align: center;
+}
+
+.empty-state {
+    padding: 100px 20px;
+}
+
+.empty-icon {
+    font-size: 50px;
+    color: #555555;
+
+    margin-bottom: 20px;
+}
+
+.empty-state h2,
+.empty-search h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.empty-state p,
+.empty-search p {
+    color: #777777;
+}
+
+.empty-search {
+    width: min(1200px, 92%);
+    margin: auto;
+
+    min-height: 350px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-search-content span {
+    display: block;
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.empty-search-content h2 {
+    font-size: 30px;
+}
+
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid #222222;
+
+    text-align: center;
+
+    padding: 25px;
+
+    color: #555555;
+
+    font-size: 12px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 22px 0;
+    }
+
+    .hero {
+        min-height: 420px;
+    }
+
+    .hero-content {
+        padding-top: 50px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .search-form {
+        flex-direction: column;
+
+        background: transparent;
+        border: none;
+        padding: 0;
+        gap: 8px;
+    }
+
+    .search-form input {
+        background: #151515;
+        border: 1px solid #333333;
+        border-radius: 6px;
+    }
+
+    .search-form button {
+        min-height: 52px;
+    }
+
+    .results-header {
+        align-items: start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .movie-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 15px;
+    }
+
+    .movie-info {
+        padding: 12px;
+    }
+
+    .movie-info h3 {
+        font-size: 15px;
+    }
+
+    .overview {
+        font-size: 12px;
+    }
+}
+

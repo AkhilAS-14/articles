@@ -1,0 +1,106 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ARTICLE</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <header>
+
+            <h1>
+                <a href="{% url 'articles:list' %}">
+                    Article
+                </a>
+            </h1>
+            <nav>
+    <ul>
+
+        <li>
+            <a href="{% url 'articles:list' %}"
+               class="{% if request.resolver_match.url_name == 'list' %}active{% endif %}">
+                Home
+            </a>
+        </li>
+
+        {% if request.resolver_match.app_name != 'accounts' %}
+    <li>
+        <a href="{% url 'articles:cart' %}"
+           class="{% if request.resolver_match.url_name == 'cart' %}active{% endif %}">
+            Cart
+        </a>
+    </li>
+{% endif %}
+
+        
+
+        {% if user.is_authenticated %}
+
+            <li>
+                <a href="{% url 'articles:create' %}"
+                   class="{% if request.resolver_match.url_name == 'create' %}active{% endif %}">
+                    New Article
+                </a>
+            </li>
+            <li>
+    <form
+        class="logout-link"
+        action="{% url 'accounts:logout' %}"
+        method="post"
+    >
+        {% csrf_token %}
+        <button type="submit">
+            Logout
+        </button>
+    </form>
+</li>
+
+ 
+
+        {% else %}
+
+            <li>
+                <a href="{% url 'accounts:login' %}">
+                    Login
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'accounts:signup' %}">
+                    Signup
+                </a>
+            </li>
+
+        {% endif %}
+
+    </ul>
+</nav>
+
+            
+
+        </header>
+
+
+        <main>
+
+            {% block content %}
+            {% endblock %}
+
+        </main>
+
+
+        <footer>
+            <p>© 2026 Article</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
